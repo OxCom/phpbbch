@@ -1,0 +1,27 @@
+<div class="panel bg3 panel-container" id="syntax-panel">
+    <div class="inner">
+        <p>
+            {L_PHPBBCH_POST_TAB_HELP}:
+        </p>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Language</th>
+                        <th>&nbsp;</th>
+                        <th>Style Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for key,lang in PHPBBCH_POST_HELP_LANGS %}
+                    <tr>
+                        <td>{{ lang }}</td>
+                        <td>&nbsp;</td>
+                        <td>{{ key }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

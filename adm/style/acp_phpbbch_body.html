@@ -1,0 +1,56 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_SETTINGS}</h1>
+
+<form id="acp_board" method="post" action="{U_ACTION}">
+    <fieldset>
+        <dl>
+            <dt>
+                <label for="oxcom_phpbbch_theme">{L_ACP_PHPBBCH_THEME}</label>
+                <p>
+                    Please visit this site to get more information about themes
+                    <a href="https://highlightjs.org/" target="_blank" title="HighlightJS">HighlightJS</a>
+                </p>
+            </dt>
+            <dd>
+                <select class="select" id="oxcom_phpbbch_theme" name="oxcom_phpbbch_theme">
+                    {% for key,title in ACP_PHPBBCH_THEMES %}
+                        <option value="{{ key }}" {% if key == ACP_PHPBBCH_THEME %} selected="selected" {% endif %}>
+                            {{ title }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt>
+                <label>{L_ACP_PHPBBCH_LANGUAGES}</label>
+                <p>
+                    List of supported packages based on version
+                    <a href="https://github.com/isagalaev/highlight.js/tree/{{ ACP_PHPBBCH_VERSION }}" target="_blank" title="{{ ACP_PHPBBCH_VERSION }}">
+                        {{ ACP_PHPBBCH_VERSION }} Highlight.js
+                    </a>
+                </p>
+            </dt>
+            <dd>
+            {% for key,title in ACP_PHPBBCH_LANGUAGES %}
+                <input type="checkbox" class="checkbox"
+                       name="oxcom_phpbbch_langs[]"
+                       value="{{ key }}"
+                       {% if key in ACP_PHPBBCH_LANGS %} checked="checked" {% endif %}
+                />&nbsp;{{ title }}
+                <br />
+            {% endfor %}
+            </dd>
+        </dl>
+        <p class="submit-buttons">
+            <input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+            <input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+        </p>
+
+        {S_FORM_TOKEN}
+    </fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

@@ -1,0 +1,7 @@
+{% INCLUDEJS '@oxcom_phpbbch/js/higlightjs/highlight.min.js' %}
+
+{% for lang in PHPBBCH_ALLOWED_LANGS %}
+    {% INCLUDEJS '@oxcom_phpbbch/js/higlightjs/languages/' ~ lang ~'.min.js' %}
+{% endfor %}
+
+{% INCLUDEJS '@oxcom_phpbbch/js/init.js' %}
