@@ -1,12 +1,3 @@
-#services:
-#    acme.demo.controller:
-#        class: oxcom\phpbb-code-highlight\controller\main
-#        arguments:
-#            - '@config'
-#            - '@controller.helper'
-#            - '@template'
-#            - '@user'
-
 services:
     oxcom.phpbbch.listener:
         class: oxcom\phpbbch\event\main
