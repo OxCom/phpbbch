@@ -27,7 +27,7 @@ class add_module extends \phpbb\db\migration\migration
         return [
 
             // Add the config variable we want to be able to set
-            ['config.add', ['oxcom_phpbbch_version', '9.12.0']],
+            ['config.add', ['oxcom_phpbbch_version', '9.12.0']], // version of JS highlights
             ['config.add', ['oxcom_phpbbch_theme', 'vs2015']], // because it's developed by my own goal
             ['config.add', ['oxcom_phpbbch_lang_cpp', 'Y']],
             ['config.add', ['oxcom_phpbbch_lang_cs', 'Y']],

@@ -30,7 +30,7 @@ class add_code extends container_aware_migration
     {
         $code = new \oxcom\phpbbch\core\code($this->db, $this->phpbb_root_path, $this->php_ext);
         $code->install('Syntax=', [
-            'bbcode_helpline'    => 'Usage: [syntax=style]code[/syntax]',
+            'bbcode_helpline'    => 'Usage: [syntax=style]code[/syntax]. See Syntax Highlight tab.',
             'bbcode_match'       => '[syntax={IDENTIFIER}]{TEXT}[/syntax]',
             'first_pass_replace' => '\'[syntax=${1}:$uid]${2}[/syntax:$uid]\'',
             'bbcode_tpl'         => '<div class="codebox" data-bind="code-box"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><code data-bind="phpbbch-code" class="{IDENTIFIER}">{TEXT}<br></code></div>',
