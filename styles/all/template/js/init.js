@@ -1,9 +1,18 @@
-$(function() {
+$(function () {
     hljs.configure({
         useBR: true,
         tabReplace: '    ' // 4 spaces
     });
-    $('code[data-bind="phpbbch-code"]').each(function (i, block) {
-        hljs.highlightBlock(block);
-    });
+
+    $('code')
+        .each(function (i, block) {
+            if ($(block).data('bind') !== 'phpbbch-code') {
+                var content = $(block).html();
+
+                content = content.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                $(block).html(content);
+            }
+
+            hljs.highlightBlock(block);
+        });
 });
