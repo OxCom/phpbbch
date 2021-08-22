@@ -4,7 +4,9 @@ $(function () {
         tabReplace: '    ' // 4 spaces
     });
 
-    $('code')
+    var selector =  window.oxcom_phpbbch_config.behavior.format_only_ext ? "code[data-bind=\'phpbbch-code\']" : 'code';
+
+    $(selector)
         .each(function (i, block) {
             if ($(block).data('bind') !== 'phpbbch-code') {
                 var content = $(block).html();

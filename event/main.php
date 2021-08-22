@@ -78,7 +78,7 @@ class main implements EventSubscriberInterface
         $enabled   = $this->getSelectedLanguages();
 
         foreach ($available as $key => $name) {
-            if (in_array($key, $enabled, true)) {
+            if (\in_array($key, $enabled, true)) {
                 continue;
             }
 
@@ -86,8 +86,9 @@ class main implements EventSubscriberInterface
         }
 
         $this->template->assign_vars([
-            'PHPBBCH_ALLOWED_LANGS'   => array_keys($available),
-            'PHPBBCH_POST_HELP_LANGS' => $available,
+            'PHPBBCH_ALLOWED_LANGS'      => \array_keys($available),
+            'PHPBBCH_POST_HELP_LANGS'    => $available,
+            'PHPBBCH_BEHAVIOUR_EXT_ONLY' => $this->config['oxcom_phpbbch_format_only'],
         ]);
     }
 
@@ -99,20 +100,16 @@ class main implements EventSubscriberInterface
      */
     protected function getSelectedLanguages()
     {
-        $config = $this->config;
-
         $allowed = \oxcom\phpbbch\core\settings::getLanguages();
         $allowed = array_keys($allowed);
 
         // get list of selected languages
-        $enabled = array_filter($allowed, function ($key) use ($config) {
-            $key    = 'oxcom_phpbbch_lang_' . $key;
+        return \array_filter($allowed, function ($key) {
+            $key    = 'oxcom_phpbbch_lang_'.$key;
             $status = $this->config[$key];
 
             return !empty($status) && $status === main_module::ENUM_ALLOWED_YES;
         });
-
-        return $enabled;
     }
 
     /**

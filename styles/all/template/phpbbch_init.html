@@ -1,3 +1,11 @@
+<script type="text/javascript">
+    window.oxcom_phpbbch_config = {
+        behavior: {
+            format_only_ext: {{ PHPBBCH_BEHAVIOUR_EXT_ONLY == 'Y' ? 'true' : 'false' }}
+    }
+    };
+</script>
+
 {% INCLUDEJS '@oxcom_phpbbch/js/higlightjs/highlight.min.js' %}
 
 {% for lang in PHPBBCH_ALLOWED_LANGS %}
