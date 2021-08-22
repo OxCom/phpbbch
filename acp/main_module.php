@@ -40,20 +40,23 @@ class main_module
 
             $theme = $request->variable('oxcom_phpbbch_theme', 'none');
             $langs = $request->variable('oxcom_phpbbch_langs', ['none']);
+            $bFExt = $request->variable('oxcom_phpbbch_bh_format_ext', 'N');
 
             $this->config->set('oxcom_phpbbch_theme', $theme);
+            $this->config->set('oxcom_phpbbch_format_only', $bFExt);
             $this->updateLanguages($langs);
 
             trigger_error($this->lang('ACP_PHPBBCH_SETTING_SAVED') . adm_back_link($this->u_action));
         }
 
         $template->assign_vars([
-            'ACP_PHPBBCH_LANGUAGES' => \oxcom\phpbbch\core\settings::getLanguages(),
-            'ACP_PHPBBCH_THEMES'    => \oxcom\phpbbch\core\settings::getThemes(),
-            'ACP_PHPBBCH_THEME'     => $this->config['oxcom_phpbbch_theme'],
-            'ACP_PHPBBCH_LANGS'     => $this->getSelectedLanguages(),
-            'ACP_PHPBBCH_VERSION'   => $this->config['oxcom_phpbbch_version'],
-            'U_ACTION'              => $this->u_action,
+            'ACP_PHPBBCH_LANGUAGES'          => \oxcom\phpbbch\core\settings::getLanguages(),
+            'ACP_PHPBBCH_THEMES'             => \oxcom\phpbbch\core\settings::getThemes(),
+            'ACP_PHPBBCH_THEME'              => $this->config['oxcom_phpbbch_theme'],
+            'ACP_PHPBBCH_LANGS'              => $this->getSelectedLanguages(),
+            'ACP_PHPBBCH_VERSION'            => $this->config['oxcom_phpbbch_version'],
+            'ACP_PHPBBCH_BEHAVIOUR_EXT_ONLY' => $this->config['oxcom_phpbbch_format_only'],
+            'U_ACTION'                       => $this->u_action,
         ]);
     }
 

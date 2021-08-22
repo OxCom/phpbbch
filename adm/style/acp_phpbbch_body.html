@@ -7,10 +7,7 @@
         <dl>
             <dt>
                 <label for="oxcom_phpbbch_theme">{L_ACP_PHPBBCH_THEME}</label>
-                <p>
-                    Please visit this site to get more information about themes
-                    <a href="https://highlightjs.org/" target="_blank" title="HighlightJS">HighlightJS</a>
-                </p>
+                <p>{L_ACP_PHPBBCH_THEME_D} <a href="https://highlightjs.org/" target="_blank" title="HighlightJS">HighlightJS</a></p>
             </dt>
             <dd>
                 <select class="select" id="oxcom_phpbbch_theme" name="oxcom_phpbbch_theme">
@@ -25,6 +22,20 @@
 
         <dl>
             <dt>
+                <label>{L_ACP_PHPBBCH_BEHAVIOUR}</label>
+                <p>{L_ACP_PHPBBCH_BEHAVIOUR_D}</p>
+            </dt>
+            <dd>
+                <input type="checkbox" class="checkbox"
+                       id="oxcom_phpbbch_bh_format_ext"
+                       name="oxcom_phpbbch_bh_format_ext"
+                       value="Y"
+                       {% if ACP_PHPBBCH_BEHAVIOUR_EXT_ONLY == 'Y' %}checked="checked"{% endif %}
+                />&nbsp;<label for="oxcom_phpbbch_bh_format_ext">{L_ACP_PHPBBCH_BEHAVIOUR_EXT_ONLY}</label>
+            </dd>
+        </dl>
+        <dl>
+            <dt>
                 <label>{L_ACP_PHPBBCH_LANGUAGES}</label>
                 <p>
                     List of supported packages based on version
@@ -36,10 +47,11 @@
             <dd>
             {% for key,title in ACP_PHPBBCH_LANGUAGES %}
                 <input type="checkbox" class="checkbox"
+                       id="oxcom_phpbbch_langs_i_{{ key }}"
                        name="oxcom_phpbbch_langs[]"
                        value="{{ key }}"
                        {% if key in ACP_PHPBBCH_LANGS %} checked="checked" {% endif %}
-                />&nbsp;{{ title }}
+                />&nbsp;<label for="oxcom_phpbbch_langs_i_{{ key }}">{{ title }}</label>
                 <br />
             {% endfor %}
             </dd>
